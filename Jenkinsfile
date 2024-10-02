@@ -41,7 +41,9 @@ pipeline {
        	  		
        	  		echo "In the test stage"
 			       		echo "Have to find the file index.html inside the build folder"
-       					grep "index.html" "build"
+     				test -f "build/index.html"
+     				
+     				
        					npm test
        	  		
        	  		'''
