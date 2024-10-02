@@ -30,12 +30,19 @@ pipeline {
             }
        stage('test')
        {
-       		sh '''
-       		
-       		echo "In the test stage"
-       		echo "Have to find the file index.html inside the build folder"
-       		grep "index.html" "/build"
-       		npm test
-       }
-    }
+			agent{
+                      docker{
+                            image 'node:18-alpine'
+                            reuseNode true
+                        }
+                }
+                steps {
+       					sh '''
+       					echo "In the test stage"
+			       		echo "Have to find the file index.html inside the build folder"
+       					grep "index.html" "/build"
+       					npm test
+       				}
+	    	}
+	    }
 }
