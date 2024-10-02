@@ -20,17 +20,16 @@ pipeline {
        	  }
        	  stage('Build')
        	  {
-       	  	agent{
-                        docker{
-                            image 'node:18-alpine'
-                            reuseNode true
-                        }
-                }
+       	  	
        	  	steps {
        	  				sh '''
        	  				 echo "Running the build"
-               		      npm run build
-               		      grep "build" *
+       	  				 ls -la
+       	  				 npm ci
+               		     npm run build
+               		     grep "build" *
+               		     
+               		     ls -la
                      
                      '''
        	  		}
