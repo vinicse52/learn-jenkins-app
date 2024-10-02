@@ -1,25 +1,16 @@
 pipeline {
     agent any
     stages {
-               stage('With docker') {
-                agent{
+              
+       	  stage('Build')
+       	  {
+       	  
+       	  agent{
                         docker{
                             image 'node:18-alpine'
                             reuseNode true
                         }
                 }
-                steps {
-                    sh '''
-                    
-                     echo "Hello World after docker"
-                     npm --version
-                     touch withdoc.txt    
-                                       
-                '''
-            }
-       	  }
-       	  stage('Build')
-       	  {
        	  	
        	  	steps {
        	  				sh '''
