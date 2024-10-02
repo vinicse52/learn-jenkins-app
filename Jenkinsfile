@@ -4,6 +4,11 @@ pipeline {
         stage('without docker') {
             steps {
                 echo 'Hello World'
+                sh '''
+                
+                touch withoutdocker.txt
+                
+                '''
             }
         }
     
@@ -14,9 +19,12 @@ pipeline {
                         }
                 }
                 steps {
+                    sh '''
                     
-                    sh 'echo "Hello World after docker"'
-                    sh 'npm --version'
+                     echo "Hello World after docker"
+                     npm --version
+                     touch withdoc.txt                
+                '''
                 }
             }
     }
